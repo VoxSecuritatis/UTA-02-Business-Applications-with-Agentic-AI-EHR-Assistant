@@ -30,8 +30,6 @@ Also included: an [executed HTML export](./Brock_Frary-PGP-AIABA-UTA-Sept26-AI_P
 
 *University of Texas at Austin -- Post Graduate Program in AI Agents for Business Applications (UTA-PGP-AIABA), September 2026 Cohort -- Module 2 Project*
 
-> **Status:** Complete. Executed end to end in Google Colab with zero errors; all five test cases verified against real live-model outputs, not simulated. Every tool call went through the MCP server with no retries or fallbacks. Three questions were answered from the patient's own record with sources and a specific care-team contact, the medication-change question was refused with a validated, record-grounded correction, and the emergency question went straight to the emergency message with no tools run.
-
 ## Overview
 
 A healthcare provider network's patient portal gives patients access to their records, but clinical terms and next steps are easy to misread, which drives portal messages and call-center contacts. This proof of concept is a patient-facing education and navigation assistant that:
