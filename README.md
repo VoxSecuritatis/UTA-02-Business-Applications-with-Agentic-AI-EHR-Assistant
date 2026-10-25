@@ -1,3 +1,5 @@
+[← Back to the UTA-AIABA Sept 2026 portfolio](https://github.com/VoxSecuritatis/UTA-AIABA-Sept26-AI-Agents-for-Business-Applications)
+
 # AI-powered EHR Assistant -- A Guardrailed Patient-Portal Agent
 
 ##### UTA-PGP-AIABA: Business Applications with Agentic AI, Project 2 | Brock Frary | Published: 2026-10-25
