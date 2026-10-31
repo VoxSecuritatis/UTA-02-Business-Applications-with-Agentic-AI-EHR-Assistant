@@ -26,7 +26,7 @@ The source notebook -- data loading, ten tools, the agent graph, five test cases
 
 The author's own retrospective -- project overview, architecture, design decisions, challenges and resolutions, trade-offs, personal reflections, and a code walkthrough.
 
-Also included: an [executed HTML export](./Brock_Frary-PGP-AIABA-UTA-Sept26-AI_Powered_EHR_Assistant_Project_2.html) of the notebook (the graded submission artifact, viewable in any browser with no setup). Its architecture diagram is drawn by the browser when the page loads; if it shows "Syntax error in text," refresh the page.
+Also included: an [executed HTML export](./Brock_Frary-PGP-AIABA-UTA-Sept26-AI_Powered_EHR_Assistant_Project_2.html) of the notebook (the graded submission artifact, viewable in any browser with no setup).
 
 ---
 
