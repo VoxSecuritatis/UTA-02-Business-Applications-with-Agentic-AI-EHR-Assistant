@@ -10445,6 +10445,29 @@ failing the whole agent turn.</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c0b5495">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Why MCP here, by choice, not by requirement.</strong> The MLS support session for this
+project states that baking tools directly into the agent -- not an MCP server -- is "a
+better choice" for a customer-facing use case like this one, citing the added hosting
+cost and roughly one to two seconds of per-call latency an MCP server introduces. The
+same session also states plainly that MCP is optional here: "you can choose to create
+MCP as well." This notebook uses a local MCP server anyway. That was a deliberate
+choice, not an oversight: an MCP server and client were already covered in an earlier
+case study in this program, and standing one up here -- registration, a readiness poll,
+a bounded-retry client, and a direct-call fallback if the server is unavailable -- was a
+chance to practice that pattern end to end on a real multi-tool agent, rather than defer
+it to a future project. The latency tradeoff the session raises is real and is accepted
+here as the cost of that practice; <code>DIRECT_CALL_FUNCS</code> and the fallback path above exist
+specifically so a slow or failed MCP call never blocks an answer.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ca3422bf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -13212,6 +13235,12 @@ this proof of concept.</li>
 resolving a follow-up question within one session; a production deployment should persist
 that history across sessions and devices, with retention limits and access controls
 appropriate for protected health information.</li>
+<li><strong>Standardize the patient-facing answer into a fixed template.</strong> The support session
+described a six-part structure for future work: what the record shows, what that
+commonly means, when to contact the clinician, when to seek immediate care, suggested
+next steps, and sources. The agent already covers each of these ideas in free text;
+moving to a fixed template would make every answer easier to scan and easier to QA at
+scale, and is worth piloting before a wider rollout.</li>
 </ul>
 </div>
 </div>
@@ -13276,6 +13305,10 @@ decides whether a query should be answered, refused, or escalated before the ReA
 <li><strong>ReAct (Reasoning + Acting)</strong> -- an agent pattern where the model alternates between
 reasoning about what to do next (Thought), taking an action (here, calling a tool -- Action),
 and reading the result (Observation), repeating until it gives a Final Answer.</li>
+<li><strong>Self-confirmation bias</strong> -- the risk that a model judges its own output too
+favorably when it also acts as its own validator. Addressed here by using <code>llm_val</code>
+(<code>gpt-4o</code>), a different and stronger model than the generator <code>llm_gen</code> (<code>gpt-4o-mini</code>),
+for safety classification and refuse-path validation.</li>
 <li><strong>Session memory</strong> -- a mechanism (<code>memory_store</code>, <code>run_agent_with_memory</code>) for carrying
 conversation history across multiple turns within the same <code>session_id</code>, demonstrated here but
 not used by the five test cases; <code>reset_session</code> clears one session's history when the
